@@ -1,12 +1,12 @@
 .nav {
-    @apply h-32 bg-chamois-500 w-full flex items-center relative text-2xl cursor-pointer;
+    @apply h-32 w-full flex items-center relative text-2xl cursor-pointer;
 
     i {
-        @apply text-5xl text-chamois-900 cursor-pointer;
+        @apply text-5xl cursor-pointer;
     }
 
     &-menu {
-        @apply fixed top-0 left-0 bg-red-400 w-full h-full z-20 transform -translate-y-full transition duration-300 p-8 pb-20;
+        @apply fixed top-0 left-0 w-full h-full z-20 transform -translate-y-full transition duration-300 p-8 pb-20;
 
         &.active {
             @apply translate-y-0 transition duration-300;

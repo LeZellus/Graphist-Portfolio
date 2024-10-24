@@ -16,19 +16,18 @@
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
             {{ encore_entry_script_tags('menu') }}
-            {{ encore_entry_script_tags('shade') }}
         {% endblock %}
     </head>
     <body>
         <main class="main">
             {%  include("includes/_nav.html.twig") %}
             
-            <section class="section-border">
-                <h1>
-                    <span class="title title-shadowed">S</span>
-                    <span class="title title-text">ylvain</span> 
-                    <span class="title title-text">  .  </span> 
-                    <span class="title title-shadowed">B</span>
+            <section class="section-border data-color-border">
+                <h1 class="data-color-background">
+                    <span class="data-color-text">S</span>
+                    <span class="data-color-text">ylvain</span> 
+                    <span class="data-color-text">  .  </span> 
+                    <span class="data-color-text">B</span>
                 </h1>
                 {% block body %}
 

@@ -13,6 +13,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ColorField;
 
 class CreationCrudController extends AbstractCrudController
 {
@@ -31,7 +32,8 @@ class CreationCrudController extends AbstractCrudController
             DateTimeField::new('updatedAt', "Date de mise à jour")->hideOnForm(),
             TextField::new('imageFile', "Image")->setFormType(VichImageType::class)->hideOnIndex(),
             ImageField::new('file', "Image")->setBasePath("/uploads/creations/")->onlyOnIndex(),
-            SlugField::new('slug', "Url de la création")->setTargetFieldName('title')->hideOnIndex(),
+            SlugField::new('slug', "Url")->setTargetFieldName('title')->hideOnIndex(),
+            ColorField::new('color', "Couleur"),
             AssociationField::new('category', "Catégorie")
         ];
     }

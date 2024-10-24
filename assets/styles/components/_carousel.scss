@@ -14,7 +14,7 @@
 }
 
 .swiper-slide img {
-    @apply block w-full h-[calc(36rem+0rem)] object-cover rounded-xl;
+    @apply block w-full md:h-[calc(36rem+0rem)] object-cover rounded-xl overflow-hidden;
 }
 
 .swiper-pagination-bullet-active {
@@ -22,5 +22,5 @@
 }
 
 .swiper-pagination-bullet {
-    @apply bg-chamois-800 h-3 w-3;
+    @apply h-3 w-3;
 }

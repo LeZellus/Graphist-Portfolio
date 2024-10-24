@@ -1,8 +1,8 @@
 <nav class="nav">
-    <i class="ph-bold ph-android-logo" id="menu-toggle"></i>
-    <section class="nav-menu">
-        <i class="ph-bold ph-x" id="menu-close"></i>
-        <div class="space-y-4 text-center flex flex-col items-center h-full justify-center pb-12">
+    <i class="ph-bold ph-list data-color-text" id="menu-toggle"></i>
+    <section class="nav-menu data-color-nav">
+        <i class="ph-bold ph-x data-color-text" id="menu-close"></i>
+        <div class="space-y-4 text-center flex flex-col items-center h-full justify-center pb-12 ">
             <a href="{{ path("app_home") }}">Accueil</a>
             {% if not app.user %}
                 <a href="{{ path("app_login") }}">Connexion</a>

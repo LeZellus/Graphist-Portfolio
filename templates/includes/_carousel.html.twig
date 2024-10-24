@@ -6,8 +6,9 @@
         {% set midPoint = (maxDots // 2) %}
 
         {% for creation in creations %}
-            <div class="swiper-slide" data-bg-color="#E9DDA9" data-title-color="#E9DDA9">
+            <div class="swiper-slide data-color-text" data-color="{{ creation.color }}">
                 <h2 class="text-4xl">{{ creation.title }}</h2>
+                <h2 class="text-4xl">{{ creation.color }}</h2>
                 <p class="description text-2xl">{{ creation.description }}</p>
                 <p class="text-sm underline uppercase text-blue-400">{{ creation.category }}</p>
                 <div class="text-sm">
