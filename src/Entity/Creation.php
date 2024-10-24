@@ -4,8 +4,13 @@ namespace App\Entity;
 
 use App\Repository\CreationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CreationRepository::class)]
+#[Vich\Uploadable]
+#[ORM\HasLifecycleCallbacks]
 class Creation
 {
     #[ORM\Id]
@@ -22,7 +27,15 @@ class Creation
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-    #[ORM\Column(length: 255)]
+    #[Vich\UploadableField(mapping: 'creations', fileNameProperty: 'file')]
+    #[Assert\NotBlank(message: 'Ajoutez une image.')]
+    #[Assert\File(
+        mimeTypes: ['image/jpeg', 'image/png', 'image/png', 'image/gif', 'image/webp'],
+        mimeTypesMessage: 'renseignez une extension valide (JPEG | PNG | GIF | WEBP).'
+    )]
+    private ?File $imageFile = null;
+
+    #[ORM\Column(length: 255, nullable: false)]
     private ?string $file = null;
 
     #[ORM\Column(length: 255)]
@@ -30,6 +43,10 @@ class Creation
 
     #[ORM\Column(length: 255)]
     private ?string $description = null;
+
+    #[ORM\ManyToOne(inversedBy: 'creations')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $category = null;
 
     public function getId(): ?int
     {
@@ -41,11 +58,12 @@ class Creation
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    #[ORM\PrePersist]
+    public function setCreatedAt($createdAt): void
     {
-        $this->createdAt = $createdAt;
-
-        return $this;
+        if ($this->createdAt === null) {
+            $this->createdAt = $createdAt;
+        }
     }
 
     public function getUpdatedAt(): ?\DateTimeImmutable
@@ -55,7 +73,8 @@ class Creation
 
     public function setUpdatedAt(\DateTimeImmutable $updatedAt): static
     {
-        $this->updatedAt = $updatedAt;
+        $timezone = new DateTimeZone('Europe/Paris');
+        $this->updatedAt = new \DateTimeImmutable('now', $timezone);
 
         return $this;
     }
@@ -104,6 +123,34 @@ class Creation
     public function setDescription(string $description): static
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function setImageFile(?File $imageFile): void
+    {
+        $this->imageFile = $imageFile;
+
+        if (null !== $imageFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): static
+    {
+        $this->category = $category;
 
         return $this;
     }
