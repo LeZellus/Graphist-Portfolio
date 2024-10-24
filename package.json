@@ -24,6 +24,7 @@
     "dependencies": {
         "@phosphor-icons/web": "^2.1.1",
         "sass": "^1.80.4",
-        "sass-loader": "^16.0.1"
+        "sass-loader": "^16.0.1",
+        "swiper": "^11.1.14"
     }
 }
