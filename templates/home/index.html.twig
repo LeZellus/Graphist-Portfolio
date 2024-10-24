@@ -3,11 +3,7 @@
 {% block title %}Accueil | {{ parent() }}{% endblock %}
 
 {% block body %}
-
-{% if not app.user %}
-    <a href="{{ path("app_login") }}">Connexion</a>
-{% else %}
-    <a href="{{ path("app_logout") }}">Déconnexion</a>
-{% endif %}
-
+    <section class="mx-8 mt-16 min-h-[calc(100vh-16rem)] flex items-center">
+        {%  include("includes/_carousel.html.twig") %}
+    </section>
 {% endblock %}

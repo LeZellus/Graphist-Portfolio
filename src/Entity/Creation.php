@@ -28,11 +28,6 @@ class Creation
     private ?string $title = null;
 
     #[Vich\UploadableField(mapping: 'creations', fileNameProperty: 'file')]
-    #[Assert\NotBlank(message: 'Ajoutez une image.')]
-    #[Assert\File(
-        mimeTypes: ['image/jpeg', 'image/png', 'image/png', 'image/gif', 'image/webp'],
-        mimeTypesMessage: 'renseignez une extension valide (JPEG | PNG | GIF | WEBP).'
-    )]
     private ?File $imageFile = null;
 
     #[ORM\Column(length: 255, nullable: false)]

@@ -3,3 +3,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html, body {
+    @apply h-full;
+}
+
+body {
+    @apply p-0 m-0;
+    transition: background-color 1s;
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.main {
+    @apply px-8 min-h-screen bg-chamois-500 relative;
+}
+
+.section {
+
+    &-border {
+        @apply border-4 border-chamois-700 rounded-3xl min-h-[calc(100vh-12rem)] mt-2 relative;
+    }
+}
+
+h1 {
+    @apply bg-chamois-500 absolute left-1/2 transform -translate-x-1/2 text-5xl -top-6 z-10 px-4 flex; 
+    font-family: "Major Mono Display", monospace;
+    font-weight: 400;
+    font-style: normal;
+    transition: color 1s;
+}
+
+.title {
+
+    &-text {
+        @apply text-chamois-700;
+    }
+
+    &-shadowed {
+        @apply bg-chamois-900 text-transparent bg-clip-text;
+        text-shadow: 10px 10px 40px rgba(233, 221, 169, 0.9);
+    }
+}

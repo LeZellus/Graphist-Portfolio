@@ -1,0 +1,16 @@
+<nav class="nav">
+    <i class="ph-bold ph-android-logo" id="menu-toggle"></i>
+    <section class="nav-menu">
+        <i class="ph-bold ph-x" id="menu-close"></i>
+        <div class="space-y-4 text-center flex flex-col items-center h-full justify-center pb-12">
+            <a href="{{ path("app_home") }}">Accueil</a>
+            {% if not app.user %}
+                <a href="{{ path("app_login") }}">Connexion</a>
+            {% else %}
+                <a href="{{ path("admin") }}">Admin</a>
+                <a href="{{ path("app_logout") }}">Déconnexion</a>
+            {% endif %}
+            <a href="{{ path("app_home") }}">Réseaux</a>
+        </div>
+    </section>
+</nav>

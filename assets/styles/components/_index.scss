@@ -1,19 +1,2 @@
-html, body {
-    @apply h-full;
-}
-
-body {
-    @apply p-0 m-0;
-}
-
-.main {
-    @apply px-8 py-16 min-h-screen bg-amber-200 flex relative;
-}
-
-.section {
-    @apply border-2 border-gray-700 fixed w-[calc(100%-4rem)] bg-amber-200 rounded-3xl overflow-hidden h-[calc(100vh-8rem)];
-}
-
-h1 {
-    @apply bg-red-200 absolute left-1/2 transform -translate-x-1/2 top-8 text-lg; 
-}
+@use "navigation";
+@use "carousel";
