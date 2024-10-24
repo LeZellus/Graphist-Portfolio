@@ -1,21 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil | Sylvain B. Graphiste / Artiste 3D{% endblock %}
+{% block title %}Accueil | {{ parent() }}{% endblock %}
 
 {% block body %}
 
-<div class="example-wrapper">
-    <h1>Sylvain B</h1>
+{% if not app.user %}
+    <a href="{{ path("app_login") }}">Connexion</a>
+{% else %}
+    <a href="{{ path("app_logout") }}">Déconnexion</a>
+{% endif %}
 
-    <ul>
-        <li>Your controller at <code>C:/Users/mathe/Documents/Dev/Portfolio/src/Controller/HomeController.php</code></li>
-        <li>Your template at <code>C:/Users/mathe/Documents/Dev/Portfolio/templates/home/index.html.twig</code></li>
-
-    </ul>
-    {% if not app.user %}
-        <a href="{{ path("app_login") }}">Connexion</a>
-    {% else %}
-        <a href="{{ path("app_logout") }}">Déconnexion</a>
-    {% endif %}
-</div>
 {% endblock %}
