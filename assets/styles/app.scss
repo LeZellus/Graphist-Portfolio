@@ -10,7 +10,8 @@ html, body {
 
 body {
     @apply p-0 m-0 transition duration-300;
-    font-family: "VT323", monospace;
+    font-family: "Oxanium", sans-serif;
+    font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
 }

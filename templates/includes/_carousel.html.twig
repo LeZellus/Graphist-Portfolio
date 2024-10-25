@@ -8,12 +8,13 @@
         {% for creation in creations %}
             <div class="swiper-slide data-color-text" data-color="{{ creation.color }}">
                 <h2 class="text-4xl">{{ creation.title }}</h2>
-                <h2 class="text-4xl">{{ creation.color }}</h2>
                 <p class="description text-2xl">{{ creation.description }}</p>
-                <p class="text-sm underline uppercase text-blue-400">{{ creation.category }}</p>
-                <div class="text-sm">
-                    <p>Création: {{ creation.createdAt|date('Y-m-d H:i:s') }}</p>
-                    <p>Mis à jour: {{ creation.updatedAt|date('Y-m-d H:i:s') }}</p>
+                <p class="mt-2 text-sm underline uppercase text-blue-400">{{ creation.category }}</p>
+                <div class="my-4">
+                    <div class="text-sm">
+                        <p><span class="font-thin">Création: </span>{{ creation.createdAt|date('Y-m-d H:i:s') }}</p>
+                        <p><span class="font-thin">Mis à jour: </span>{{ creation.updatedAt|date('Y-m-d H:i:s') }}</p>
+                    </div>
                 </div>
                 <img src="{{ asset('uploads/creations/' ~ creation.file) }}" alt="{{ creation.title }}">
             </div>
