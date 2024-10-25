@@ -9,7 +9,7 @@
             <div class="swiper-slide data-color-text" data-color="{{ creation.color }}">
                 <h2 class="text-4xl">{{ creation.title }}</h2>
                 <p class="description text-2xl">{{ creation.description }}</p>
-                <p class="mt-2 text-sm underline uppercase text-blue-400">{{ creation.category }}</p>
+                <a href="{{ path('app_category', { slug: creation.category.slug }) }}" class="mt-2 text-sm underline uppercase text-blue-400">{{ creation.category }}</a>
                 <div class="my-4">
                     <div class="text-sm">
                         <p><span class="font-thin">Création: </span>{{ creation.createdAt|date('Y-m-d H:i:s') }}</p>

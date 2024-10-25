@@ -4,13 +4,24 @@
         <i class="ph-bold ph-x data-color-text" id="menu-close"></i>
         <div class="space-y-4 text-center flex flex-col items-center h-full justify-center pb-12 ">
             <a href="{{ path("app_home") }}">Accueil</a>
-            {% if not app.user %}
-                <a href="{{ path("app_login") }}">Connexion</a>
-            {% else %}
+            {% for category in get_categories() %}
+                <a href="{{ path('app_category', { slug: category.slug }) }}">{{ category.name }}</a>
+            {% endfor %}
+            {% if app.user %}
                 <a href="{{ path("admin") }}">Admin</a>
                 <a href="{{ path("app_logout") }}">Déconnexion</a>
             {% endif %}
-            <a href="{{ path("app_home") }}">Réseaux</a>
+            <div class="flex justify-center items-center">
+                <a href="{{ path("app_home") }}">
+                    <i class="ph-bold ph-linkedin-logo"></i>
+                </a>
+                <a href="{{ path("app_home") }}">
+                    <i class="ph-bold ph-instagram-logo"></i>
+                </a>
+                <a href="{{ path("app_home") }}">
+                    <i class="ph-bold ph-x-logo"></i>
+                </a>
+            </div>
         </div>
     </section>
 </nav>
