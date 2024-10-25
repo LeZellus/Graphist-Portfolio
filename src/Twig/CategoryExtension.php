@@ -24,6 +24,6 @@ class CategoryExtension extends AbstractExtension
 
     public function getCategories(): array
     {
-        return $this->categoryRepository->findAllCategoryNamesAndSlugs();
+        return $this->categoryRepository->findAllCategoryNamesAndSlugsWithCreations();
     }
 }

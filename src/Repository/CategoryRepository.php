@@ -16,9 +16,12 @@ class CategoryRepository extends ServiceEntityRepository
         parent::__construct($registry, Category::class);
     }
 
-    public function findAllCategoryNamesAndSlugs(): array
-    {
+    public function findAllCategoryNamesAndSlugsWithCreations(): array
+{
         $qb = $this->createQueryBuilder('c')
+            ->innerJoin('c.creations', 'cr') // Assure-toi que 'creations' est le bon nom de la relation
+            ->addSelect('cr') // On sélectionne aussi les créations si nécessaire
+            ->groupBy('c.id') // Regroupement par catégorie
             ->select('c.name, c.slug')
             ->getQuery();
 

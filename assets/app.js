@@ -12,11 +12,12 @@ import "@phosphor-icons/web/bold";
 
 // core version + navigation, pagination modules:
 import Swiper from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
 // import Swiper and modules styles
 import 'swiper/css';
-import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
+import 'swiper/css/effect-cube';
 
 document.addEventListener("DOMContentLoaded", function () {
     // Sélectionner la première slide active
@@ -26,13 +27,26 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 const swiper = new Swiper(".mySwiper", {
-    modules: [Pagination],
+    modules: [Pagination, Autoplay, EffectFade],
+    effect: "fade",
+    
+    fadeEffect: {
+        crossFade: true,
+    },
     pagination: {
         el: ".swiper-pagination",
         clickable: true,
+        dynamicBullets: true,
+        dynamicMainBullets: 1,
+    },
+    autoplay: {
+        autoplay:true,
+        delay: 3000,
+        pauseOnMouseEnter: true,
     },
     on: {
         slideChangeTransitionStart: function () {
+            console.log("coucou")
             // Lorsque la slide change, applique les shades à la nouvelle slide active
             const activeSlide = document.querySelector('.swiper-slide-active');
             const colorHex = activeSlide.getAttribute('data-color');

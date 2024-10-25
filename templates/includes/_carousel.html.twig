@@ -16,7 +16,8 @@
                         <p><span class="font-thin">Mis à jour: </span>{{ creation.updatedAt|date('Y-m-d H:i:s') }}</p>
                     </div>
                 </div>
-                <img src="{{ asset('uploads/creations/' ~ creation.file) }}" alt="{{ creation.title }}">
+                <img src="{{ asset('uploads/creations/' ~ creation.file) }}" alt="{{ creation.title }}" loading="lazy">
+                <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
             </div>
         {% endfor %}
     </div>

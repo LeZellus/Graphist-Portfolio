@@ -3,22 +3,22 @@
     <section class="nav-menu data-color-nav">
         <i class="ph-bold ph-x data-color-text" id="menu-close"></i>
         <div class="space-y-4 text-center flex flex-col items-center h-full justify-center pb-12 ">
-            <a href="{{ path("app_home") }}">Accueil</a>
+            <a class="hover:underline transition duration-300" href="{{ path("app_home") }}">Accueil</a>
             {% for category in get_categories() %}
-                <a href="{{ path('app_category', { slug: category.slug }) }}">{{ category.name }}</a>
+                <a class="hover:underline transition duration-300" href="{{ path('app_category', { slug: category.slug }) }}">{{ category.name }}</a>
             {% endfor %}
             {% if app.user %}
-                <a href="{{ path("admin") }}">Admin</a>
-                <a href="{{ path("app_logout") }}">Déconnexion</a>
+                <a class="hover:underline transition duration-300" href="{{ path("admin") }}">Admin</a>
+                <a class="hover:underline transition duration-300" href="{{ path("app_logout") }}">Déconnexion</a>
             {% endif %}
             <div class="flex justify-center items-center">
-                <a href="{{ path("app_home") }}">
+                <a class="hover:scale-95 transition duration-300" href="{{ path("app_home") }}">
                     <i class="ph-bold ph-linkedin-logo"></i>
                 </a>
-                <a href="{{ path("app_home") }}">
+                <a class="hover:scale-95 transition duration-300" href="{{ path("app_home") }}">
                     <i class="ph-bold ph-instagram-logo"></i>
                 </a>
-                <a href="{{ path("app_home") }}">
+                <a class="hover:scale-95 transition duration-300" href="{{ path("app_home") }}">
                     <i class="ph-bold ph-x-logo"></i>
                 </a>
             </div>
