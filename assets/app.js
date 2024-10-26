@@ -12,12 +12,13 @@ import "@phosphor-icons/web/bold";
 
 // core version + navigation, pagination modules:
 import Swiper from 'swiper';
-import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
+import { Pagination, Autoplay, EffectFade, Mousewheel } from 'swiper/modules';
 // import Swiper and modules styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
-import 'swiper/css/effect-cube';
+import 'swiper/css/effect-fade';
+import 'swiper/css/mousewheel';
 
 document.addEventListener("DOMContentLoaded", function () {
     // Sélectionner la première slide active
@@ -27,9 +28,13 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 const swiper = new Swiper(".mySwiper", {
-    modules: [Pagination, Autoplay, EffectFade],
+    modules: [Pagination, Autoplay, EffectFade, Mousewheel],
     effect: "fade",
-    
+    mousewheel: {
+        enabled: true,
+        sensitivity: 0,
+        releaseOnEdges: true,
+    },
     fadeEffect: {
         crossFade: true,
     },
