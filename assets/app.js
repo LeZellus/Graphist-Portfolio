@@ -32,8 +32,8 @@ const swiper = new Swiper(".mySwiper", {
     effect: "fade",
     mousewheel: {
         enabled: true,
+        eventsTarget: 'swiper',
         sensitivity: 0,
-        releaseOnEdges: true,
     },
     fadeEffect: {
         crossFade: true,
