@@ -15,6 +15,7 @@
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
             {{ encore_entry_script_tags('menu') }}
+            {{ encore_entry_script_tags('carousel_zoom') }}
         {% endblock %}
     </head>
     <body>
@@ -33,5 +34,14 @@
                 {% endblock %}
             </section>
         </main>
+        <div id="imageModal" class="hidden fixed inset-0 bg-black bg-opacity-90 z-50 items-center justify-center">
+            <div class="relative w-full h-full flex items-center justify-center p-4">
+                <button class="close-modal absolute top-4 right-4 text-white text-4xl hover:text-gray-300 z-10 bg-black bg-opacity-50 rounded-full w-12 h-12 flex items-center justify-center">&times;</button>
+                <img id="modalImage" src="" alt="" class="max-w-full max-h-full object-contain select-none transition-transform duration-200">
+            </div>
+            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-sm bg-black bg-opacity-50 px-3 py-1 rounded">
+                Clic pour zoomer • Double-clic pour reset • Molette pour zoomer précis
+            </div>
+        </div>
     </body>
 </html>

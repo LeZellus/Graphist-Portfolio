@@ -22,6 +22,7 @@ Encore
      */
     .addEntry('app', './assets/app.js')
     .addEntry('menu', './assets/styles/js/menu.js')
+    .addEntry('carousel_zoom', './assets/styles/js/carousel_zoom.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()

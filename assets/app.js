@@ -57,6 +57,14 @@ const swiper = new Swiper(".mySwiper", {
             const colorHex = activeSlide.getAttribute('data-color');
             applyShades(colorHex);
         }
+    },
+    zoom: {
+        maxRatio: 3,
+        minRatio: 1,
+        toggle: true,
+    },
+    keyboard: {
+        enabled: true,
     }
 });
 
