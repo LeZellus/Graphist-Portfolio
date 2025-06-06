@@ -11,15 +11,15 @@
                 <a class="hover:underline transition duration-300" href="{{ path("admin") }}">Admin</a>
                 <a class="hover:underline transition duration-300" href="{{ path("app_logout") }}">Déconnexion</a>
             {% endif %}
-            <div class="flex justify-center items-center">
-                <a class="hover:scale-95 transition duration-300" href="{{ path("app_home") }}">
-                    <i class="ph-bold ph-linkedin-logo"></i>
+            <div class="grid grid-cols-3 gap-4">
+                <a class="hover:scale-95 transition duration-300" href="https://steamcommunity.com/linkfilter/?u=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fsylvain-balaguer-29162a137%2F">
+                    <img class="h-10" src="{{ asset('uploads/Logo_Linkedin.svg') }}">
                 </a>
-                <a class="hover:scale-95 transition duration-300" href="{{ path("app_home") }}">
-                    <i class="ph-bold ph-instagram-logo"></i>
+                <a class="hover:scale-95 transition duration-300" href="https://steamcommunity.com/linkfilter/?u=https%3A%2F%2Fwww.malt.fr%2Fprofile%2Fsylvainbalaguer%3Foverview">
+                    <img class="h-10" src="{{ asset('uploads/Logo_Malt.png') }}">
                 </a>
-                <a class="hover:scale-95 transition duration-300" href="{{ path("app_home") }}">
-                    <i class="ph-bold ph-x-logo"></i>
+                <a class="hover:scale-95 transition duration-300" href="https://steamcommunity.com/linkfilter/?u=https%3A%2F%2Fwww.artstation.com%2Fsylvain-b">
+                    <img class="h-10" src="{{ asset('uploads/Logo_Art.webp') }}">
                 </a>
             </div>
         </div>
