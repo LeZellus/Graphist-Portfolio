@@ -57,11 +57,18 @@ class Creation
     }
 
     #[ORM\PrePersist]
-    public function setCreatedAt($createdAt): void
+    public function onPrePersist(): void
     {
         if ($this->createdAt === null) {
-            $this->createdAt = $createdAt;
+            $this->createdAt = new \DateTimeImmutable('now', new \DateTimeZone('Europe/Paris'));
         }
+        $this->updatedAt = new \DateTimeImmutable('now', new \DateTimeZone('Europe/Paris'));
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    {
+        $this->createdAt = $createdAt;
+        return $this;
     }
 
     public function getUpdatedAt(): ?\DateTimeImmutable
@@ -69,11 +76,15 @@ class Creation
         return $this->updatedAt;
     }
 
+    #[ORM\PreUpdate]
+    public function onPreUpdate(): void
+    {
+        $this->updatedAt = new \DateTimeImmutable('now', new \DateTimeZone('Europe/Paris'));
+    }
+
     public function setUpdatedAt(\DateTimeImmutable $updatedAt): static
     {
-        $timezone = new DateTimeZone('Europe/Paris');
-        $this->updatedAt = new \DateTimeImmutable('now', $timezone);
-
+        $this->updatedAt = $updatedAt;
         return $this;
     }
 
@@ -85,7 +96,6 @@ class Creation
     public function setTitle(string $title): static
     {
         $this->title = $title;
-
         return $this;
     }
 
@@ -97,7 +107,6 @@ class Creation
     public function setFile(string $file): static
     {
         $this->file = $file;
-
         return $this;
     }
 
@@ -109,7 +118,6 @@ class Creation
     public function setSlug(string $slug): static
     {
         $this->slug = $slug;
-
         return $this;
     }
 
@@ -121,7 +129,6 @@ class Creation
     public function setDescription(string $description): static
     {
         $this->description = $description;
-
         return $this;
     }
 
@@ -130,8 +137,7 @@ class Creation
         $this->imageFile = $imageFile;
 
         if (null !== $imageFile) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
+            // Force la mise à jour d'updatedAt
             $this->updatedAt = new \DateTimeImmutable();
         }
     }
@@ -149,7 +155,6 @@ class Creation
     public function setCategory(?Category $category): static
     {
         $this->category = $category;
-
         return $this;
     }
 
@@ -161,7 +166,6 @@ class Creation
     public function setColor(string $color): static
     {
         $this->color = $color;
-
         return $this;
     }
 }
