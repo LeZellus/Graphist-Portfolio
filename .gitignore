@@ -41,6 +41,7 @@
 
 # Build data
 /build/
+/public/uploads/creations
 
 # Composer PHAR
 /composer.phar

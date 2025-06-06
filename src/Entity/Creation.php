@@ -28,6 +28,12 @@ class Creation
     private ?string $title = null;
 
     #[Vich\UploadableField(mapping: 'creations', fileNameProperty: 'file')]
+    #[Assert\File(
+        maxSize: '2M',
+        mimeTypes: ['image/jpeg', 'image/png', 'image/webp', 'image/jpg'],
+        mimeTypesMessage: 'Veuillez uploader une image valide (JPEG, PNG, WebP)',
+        maxSizeMessage: 'L\'image ne doit pas dépasser 2MB. Utilise Squoosh.app'
+    )]
     private ?File $imageFile = null;
 
     #[ORM\Column(length: 255, nullable: false)]
@@ -59,6 +65,7 @@ class Creation
     #[ORM\PrePersist]
     public function onPrePersist(): void
     {
+        error_log("PrePersist called - file: " . $this->file);
         if ($this->createdAt === null) {
             $this->createdAt = new \DateTimeImmutable('now', new \DateTimeZone('Europe/Paris'));
         }
